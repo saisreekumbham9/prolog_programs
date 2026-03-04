@@ -1,0 +1,33 @@
+1. Define a small family tree using male, female, and parent facts.
+
+2. Write rules to determine:
+
+○ father(X, Y): X is the father of Y.
+
+○ mother(X, Y): X is the mother of Y.
+
+○ grandparent(X, Y): X is the parent of a parent of Y.
+
+% --- FACTS ---
+
+male(bob). 
+male(tom).
+male(jim).
+female(pam).
+female(liz).
+female(ann). 
+% parent(Parent, Child).
+
+parent(bob, liz).
+parent(bob, tom).
+parent(pam, liz). 
+ parent(tom, ann).
+ parent(tom, jim). 
+ 
+ % --- RULES --- 
+ % X is a father if X is a parent AND X is male.
+ father(X, Y) :- parent(X, Y), male(X).
+ % X is a mother if X is a parent AND X is female. 
+ mother(X, Y) :-
+ parent(X, Y),
+female(X).
